@@ -7,7 +7,7 @@ import cors from 'cors';
 dotenv.config();
 
 const app = express();
-const PORT = process.env.PORT || 5000;
+const PORT = process.env.PORT || 5173;
 
 // Conexão com o MongoDB
 mongoose.connect(process.env.MONGODB_URI)
