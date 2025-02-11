@@ -1,21 +1,37 @@
-import mongoose from 'mongoose';
+import Parse from 'parse/node.js';
 
-const taskSchema = new mongoose.Schema({
-  title: { type: String, required: true },
-  description: String,
-  priority: { 
-    type: String, 
-    enum: ['Baixa', 'Média', 'Alta'],
-    default: 'Média'
-  },
-  status: {
-    type: String,
-    enum: ['todo', 'inProgress', 'done'],
-    default: 'todo'
-  },
-  dueDate: Date,
-  category: String,
-  createdAt: { type: Date, default: Date.now }
-});
+// Configurar a classe Task no Parse
+class Task extends Parse.Object {
+  constructor() {
+    super('Task');
+  }
 
-export default mongoose.model('Task', taskSchema);
+  static async createTask({ title, description, priority, status, dueDate, category }) {
+    const task = new Task();
+    task.set('title', title);
+    task.set('description', description || '');
+    task.set('priority', priority || 'Média');
+    task.set('status', status || 'todo');
+    task.set('dueDate', dueDate ? new Date(dueDate) : null);
+    task.set('category', category || '');
+    
+    try {
+      const savedTask = await task.save();
+      return savedTask;
+    } catch (error) {
+      throw new Error(`Erro ao criar tarefa: ${error.message}`);
+    }
+  }
+
+  static async getTasks() {
+    const query = new Parse.Query(Task);
+    try {
+      return await query.find();
+    } catch (error) {
+      throw new Error(`Erro ao buscar tarefas: ${error.message}`);
+    }
+  }
+}
+
+Parse.Object.registerSubclass('Task', Task);
+export default Task;

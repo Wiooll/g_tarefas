@@ -6,7 +6,7 @@ const router = express.Router();
 // Obter todas as tarefas
 router.get('/', async (req, res) => {
   try {
-    const tasks = await Task.find();
+    const tasks = await Task.getTasks();
     res.json(tasks);
   } catch (error) {
     res.status(500).json({ message: error.message });
@@ -15,15 +15,14 @@ router.get('/', async (req, res) => {
 
 // Criar nova tarefa
 router.post('/', async (req, res) => {
-  const task = new Task({
-    title: req.body.title,
-    description: req.body.description,
-    priority: req.body.priority,
-    status: 'todo'
-  });
-
   try {
-    const newTask = await task.save();
+    const newTask = await Task.createTask({
+      title: req.body.title,
+      description: req.body.description,
+      priority: req.body.priority,
+      status: 'todo'
+    });
+
     res.status(201).json(newTask);
   } catch (error) {
     res.status(400).json({ message: error.message });

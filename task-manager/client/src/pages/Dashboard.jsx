@@ -19,7 +19,7 @@ const Dashboard = () => {
   useEffect(() => {
     const fetchTasks = async () => {
       try {
-        const response = await axios.get('https://parseapi.back4app.com/classes/Task');
+        const response = await axios.get('https://parseapi.back4app.com/class/Task');
         setTasks(response.data);
       } catch (error) {
         console.error('Erro ao buscar tarefas:', error);
