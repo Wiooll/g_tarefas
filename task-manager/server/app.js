@@ -17,7 +17,7 @@ app.use(express.json());
 app.use(cors());
 
 // Rotas
-app.use('/class/tasks', taskRoutes);
+app.use('/classes/tasks', taskRoutes);
 
 // Iniciar servidor
 app.listen(PORT, () => {

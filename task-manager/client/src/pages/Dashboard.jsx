@@ -19,7 +19,7 @@ const Dashboard = () => {
   useEffect(() => {
     const fetchTasks = async () => {
       try {
-        const response = await axios.get('https://parseapi.back4app.com/classes/Task');
+        const response = await axios.get('https://parseapi.back4app.com/parse/classes/Task');
         if (response.data !== null && response.data !== undefined) {
           setTasks(response.data);
         } else {
@@ -55,15 +55,31 @@ const Dashboard = () => {
   // Criar nova tarefa
   const handleCreateTask = async (event) => {
     event.preventDefault();
+
+    if (!newTask.title) {
+      console.error('Erro ao criar tarefa: Título é obrigatório');
+      return;
+    }
+
+    if (!newTask.priority) {
+      console.error('Erro ao criar tarefa: Prioridade é obrigatória');
+      return;
+    }
+
+    if (!newTask.dueDate) {
+      console.error('Erro ao criar tarefa: Data de entrega é obrigatória');
+      return;
+    }
+
     try {
       const Task = Parse.Object.extend("Task");
       const task = new Task();
       task.set('title', newTask.title);
-      task.set('description', newTask.description);
+      task.set('description', newTask.description || '');
       task.set('priority', newTask.priority);
-      task.set('status', newTask.status);
+      task.set('status', newTask.status || 'todo');
       task.set('dueDate', new Date(newTask.dueDate));
-      task.set('category', newTask.category);
+      task.set('category', newTask.category || '');
       const savedTask = await task.save();
       setTasks([...tasks, savedTask]);
     } catch (error) {
