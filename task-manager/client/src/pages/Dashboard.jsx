@@ -19,10 +19,20 @@ const Dashboard = () => {
   useEffect(() => {
     const fetchTasks = async () => {
       try {
-        const response = await axios.get('https://parseapi.back4app.com/class/Task');
-        setTasks(response.data);
+        const response = await axios.get('https://parseapi.back4app.com/classes/Task');
+        if (response.data !== null && response.data !== undefined) {
+          setTasks(response.data);
+        } else {
+          console.error('Erro ao buscar tarefas:', response);
+        }
       } catch (error) {
-        console.error('Erro ao buscar tarefas:', error);
+        if (error.response) {
+          console.error('Erro ao buscar tarefas:', error.response.data);
+        } else if (error.request) {
+          console.error('Erro ao buscar tarefas:', error.request);
+        } else {
+          console.error('Erro ao buscar tarefas:', error.message);
+        }
       }
     };
     fetchTasks();
@@ -43,19 +53,21 @@ const Dashboard = () => {
   };
 
   // Criar nova tarefa
-  const fetchTasks = async () => {
+  const handleCreateTask = async (event) => {
+    event.preventDefault();
     try {
       const Task = Parse.Object.extend("Task");
-      const query = new Parse.Query(Task);
-      const results = await query.find();
-      
-      setTasks(results.map(task => ({
-        id: task.id,
-        name: task.get("name"),
-        status: task.get("status")
-      })));
+      const task = new Task();
+      task.set('title', newTask.title);
+      task.set('description', newTask.description);
+      task.set('priority', newTask.priority);
+      task.set('status', newTask.status);
+      task.set('dueDate', new Date(newTask.dueDate));
+      task.set('category', newTask.category);
+      const savedTask = await task.save();
+      setTasks([...tasks, savedTask]);
     } catch (error) {
-      console.error("Erro ao buscar tarefas:", error);
+      console.error('Erro ao criar tarefa:', error);
     }
   };
   
