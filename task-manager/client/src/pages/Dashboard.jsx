@@ -19,7 +19,13 @@ const Dashboard = () => {
   useEffect(() => {
     const fetchTasks = async () => {
       try {
-        const response = await axios.get('https://parseapi.back4app.com/parse/classes/Task');
+        const response = await axios.get('https://parseapi.back4app.com/parse/classes/Task', {
+          headers: {
+            'X-Parse-Application-Id': 'Mvti7phsJfrngsOWwqzzohEPFoFO451RDNBX51rA',
+            'X-Parse-REST-API-Key': '7LObWzjaEilkgzpyZlhlAvZScLHEaDz8A55JKUSx',
+          
+          }
+        });
         if (response.data !== null && response.data !== undefined) {
           setTasks(response.data);
         } else {
@@ -85,8 +91,7 @@ const Dashboard = () => {
     } catch (error) {
       console.error('Erro ao criar tarefa:', error);
     }
-  };
-  
+  };  
 
   return (
     <div className="min-h-screen bg-gray-100 p-8">
@@ -156,7 +161,7 @@ const Dashboard = () => {
                     )}
                     {task.dueDate && (
                       <p className="text-gray-500 text-xs mt-2">
-                        Vencimento: {new Date(task.dueDate).toLocaleDateString()}
+                        Vencimento: {new Date(task.dueDate).toLocaleDateString('pt-BR')}
                       </p>
                     )}
                   </div>

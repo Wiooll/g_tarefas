@@ -4,8 +4,8 @@ import Parse from 'parse';
 import Login from './Login';
 
 // Inicializar Parse
-Parse.initialize("Mvti7phsJfrngsOWwqzzohEPFoFO451RDNBX51rA", "17Tl1kMWMHhuXyc29JERiUl3lUvOVG7vPxd0NcLB");
-Parse.serverURL = "https://parseapi.back4app.com/classes/Profile";
+Parse.initialize("Mvti7phsJfrngsOWwqzzohEPFoFO451RDNBX51rA", "7Tl1kMWMHhuXyc29JERiUl3lUvOVG7vPxd0NcLB");
+Parse.serverURL = "https://parseapi.back4app.com/users";
 
 const Register = () => {
   const [formData, setFormData] = useState({ username: '', email: '', password: '', confirmPassword: '' });
