@@ -4,7 +4,7 @@ import Parse from 'parse';
 import Login from './Login';
 
 // Inicializar Parse
-Parse.initialize("Mvti7phsJfrngsOWwqzzohEPFoFO451RDNBX51rA", "7Tl1kMWMHhuXyc29JERiUl3lUvOVG7vPxd0NcLB");
+Parse.initialize("Mvti7phsJfrngsOWwqzzohEPFoFO451RDNBX51rA", "7LObWzjaEilkgzpyZlhlAvZScLHEaDz8A55JKUSx");
 Parse.serverURL = "https://parseapi.back4app.com/users";
 
 const Register = () => {
