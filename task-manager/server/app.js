@@ -9,8 +9,8 @@ const app = express();
 const PORT = process.env.PORT || 5173;
 
 // Inicializa Parse (Back4App)
-Parse.initialize(process.env.PARSE_APP_ID, process.env.PARSE_JS_KEY);
-Parse.serverURL = process.env.PARSE_SERVER_URL;
+Parse.initialize(process.env.BACK4APP_APP_ID, process.env.BACK4APP_JS_KEY);
+Parse.serverURL = process.env.BACK4APP_SERVER_URL;
 
 // Middlewares
 app.use(express.json());
