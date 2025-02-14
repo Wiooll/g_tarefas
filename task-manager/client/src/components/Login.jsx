@@ -1,8 +1,9 @@
 import { useState, useEffect } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import { LockClosedIcon, EnvelopeIcon } from '@heroicons/react/24/outline'
+import './Login.css'
 
-const Login = () => {
+function Login() {
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
   const [rememberMe, setRememberMe] = useState(false)
@@ -35,7 +36,7 @@ const Login = () => {
     try {
       // Simular chamada à API
       await new Promise(resolve => setTimeout(resolve, 1000))
-      
+
       if (rememberMe) {
         localStorage.setItem('rememberedEmail', email)
       } else {
@@ -61,7 +62,7 @@ const Login = () => {
           {error && (
             <div className="text-red-500 text-sm text-center">{error}</div>
           )}
-          
+
           <div className="rounded-md shadow-sm -space-y-px">
             <div>
               <label htmlFor="email" className="sr-only">
@@ -78,8 +79,7 @@ const Login = () => {
                   className="appearance-none rounded-t-md relative block w-full px-10 py-3 border border-gray-300 placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 focus:z-10 sm:text-sm"
                   placeholder="Seu email"
                   value={email}
-                  onChange={(e) => setEmail(e.target.value)}
-                />
+                  onChange={(e) => setEmail(e.target.value)} />
               </div>
             </div>
             <div>
@@ -97,8 +97,7 @@ const Login = () => {
                   className="appearance-none rounded-b-md relative block w-full px-10 py-3 border border-gray-300 placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 focus:z-10 sm:text-sm"
                   placeholder="Sua senha"
                   value={password}
-                  onChange={(e) => setPassword(e.target.value)}
-                />
+                  onChange={(e) => setPassword(e.target.value)} />
               </div>
             </div>
           </div>
@@ -111,8 +110,7 @@ const Login = () => {
                 type="checkbox"
                 className="h-4 w-4 text-blue-600 focus:ring-blue-500 border-gray-300 rounded"
                 checked={rememberMe}
-                onChange={(e) => setRememberMe(e.target.checked)}
-              />
+                onChange={(e) => setRememberMe(e.target.checked)} />
               <label htmlFor="remember-me" className="ml-2 block text-sm text-gray-900">
                 Lembrar de mim
               </label>
