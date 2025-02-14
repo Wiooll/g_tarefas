@@ -4,6 +4,7 @@ import { arrayMove, SortableContext, verticalListSortingStrategy } from '@dnd-ki
 import axios from 'axios';
 import SortableItem from '../components/SortableItem';
 
+// Componente principal
 const Dashboard = () => {
   const [tasks, setTasks] = useState([]);
   const [newTask, setNewTask] = useState({

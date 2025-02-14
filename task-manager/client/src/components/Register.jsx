@@ -19,7 +19,7 @@ const Register = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    // Aqui você pode adicionar a lógica para enviar os dados do formulário para o backend
+    // Aqui voce pode adicionar a lógica para enviar os dados do formulário para o backend
     console.log('Dados do formulário:', formData);
   };
 
