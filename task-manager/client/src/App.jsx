@@ -1,9 +1,9 @@
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { BrowserRouter, Routes, Route } from 'react-router-dom'; 
 import Dashboard from './pages/Dashboard';
 import Login from './components/Login';
 import Register from './components/Register';
 
-function App() {
+function App() { // Componente principal
   return (
     <BrowserRouter>
       <Routes>
@@ -15,4 +15,4 @@ function App() {
   );
 }
 
-export default App;
+export default App; // Exporta o componente principal

@@ -53,20 +53,20 @@ const Dashboard = () => {
   };
 
   // Criar nova tarefa
-  const handleCreateTask = async (event) => {
-    event.preventDefault();
+  const handleCreateTask = async (event) => { // Adicione o parâmetro event
+    event.preventDefault(); // Impede o comportamento padrão do formulário
 
-    if (!newTask.title) {
+    if (!newTask.title) { // Verifique se o título da nova tarefa está vazio
       console.error('Erro ao criar tarefa: Título é obrigatório');
       return;
     }
 
-    if (!newTask.priority) {
+    if (!newTask.priority) { // Verifique se a prioridade da nova tarefa está vazia
       console.error('Erro ao criar tarefa: Prioridade é obrigatória');
       return;
     }
 
-    if (!newTask.dueDate) {
+    if (!newTask.dueDate) { //Verifique se a data de entrega da nova tarefa está vazia
       console.error('Erro ao criar tarefa: Data de entrega é obrigatória');
       return;
     }

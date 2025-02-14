@@ -9,15 +9,15 @@ const app = express();
 const PORT = process.env.PORT || 5173;
 
 // Inicializa Parse (Back4App)
-Parse.initialize(process.env.PARSE_APP_ID, process.env.PARSE_JS_KEY);
+Parse.initialize(process.env.PARSE_APP_ID, process.env.PARSE_JS_KEY); 
 Parse.serverURL = process.env.PARSE_SERVER_URL;
 
 // Middlewares
-app.use(express.json());
-app.use(cors());
+app.use(express.json()); // Middleware para analisar requisicoes JSON
+app.use(cors()); // Middleware para habilitar CORS
 
 // Rotas
-app.use('/classes/tasks', taskRoutes);
+app.use('/classes/tasks', taskRoutes); // Rotas de tarefas
 
 // Iniciar servidor
 app.listen(PORT, () => {

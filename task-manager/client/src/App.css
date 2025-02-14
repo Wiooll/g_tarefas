@@ -1,33 +1,47 @@
-#root {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
-  text-align: center;
+#root { /* Define a cor de fundo para o body */
+  display: flex;  /* Define o layout como flexbox */
+  flex-direction: column; /* Garante melhor empilhamento de elementos */
+  justify-content: center; /* Centraliza verticalmente */
+  align-items: center; /* Centraliza horizontalmente */
+  max-width: 1280px; /* Define um tamanho médio para o conteúdo */
+  margin: 0 auto;   /* Centraliza horizontalmente */
+  padding: 2rem; /* Adiciona um espaço interno para melhor visualização */
+  text-align: center; /* Centraliza o texto horizontalmente */
 }
 
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
+.logo { /* Define a cor de fundo para o body */
+  height: 6em; /* Define o tamanho da imagem */
+  padding: 1.5em; /* Define o espaço interno da imagem */
+  will-change: filter; /* Define o comportamento da imagem */
+  transition: filter 300ms; /* Define a transição da imagem */
 }
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
+.logo:hover { /* Define a cor de fundo quando o link estiver em hover */
+  filter: drop-shadow(0 0 2em #646cffaa); /* Define a cor de fundo quando o link estiver em hover */
 }
-.logo.react:hover {
+.logo.react:hover { /* Define a cor de fundo quando o link estiver em hover */
+  filter: drop-shadow(0 0 2em #61dafbaa); /* Define a cor de fundo quando o link estiver em hover */
+  height: 6em; /* Define o tamanho da imagem */
+  padding: 1.5em; /* Define o espaço interno da imagem */ 
+  will-change: filter;  /* Define o comportamento da imagem */
+  transition: filter 300ms; /* Define a transição da imagem */
+}
+.logo:hover { /* Define a cor de fundo quando o link estiver em hover */
+  filter: drop-shadow(0 0 2em #646cffaa); /* Define a cor de fundo quando o link estiver em hover */
+}
+.logo.react:hover { /* Define a cor de fundo quando o link estiver em hover */
   filter: drop-shadow(0 0 2em #61dafbaa);
 }
 
-@keyframes logo-spin {
-  from {
-    transform: rotate(0deg);
+@keyframes logo-spin { /* Define a animação para o logo */
+  from { /* Define a animação para o logo */
+    transform: rotate(0deg); /* Define a animação para o logo */
   }
   to {
-    transform: rotate(360deg);
+    transform: rotate(360deg); /* Define a animação para o logo */
   }
 }
 
-@media (prefers-reduced-motion: no-preference) {
+@media (prefers-reduced-motion: no-preference) { /* Define a animação para o logo */
   a:nth-of-type(2) .logo {
     animation: logo-spin infinite 20s linear;
   }
@@ -37,6 +51,6 @@
   padding: 2em;
 }
 
-.read-the-docs {
+.read-the-docs { /* Define a cor de fundo para o body */
   color: #888;
 }
