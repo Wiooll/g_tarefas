@@ -1,5 +1,24 @@
 import React, { useState } from 'react';
 import './register.css';
+import axios from 'axios';
+import Parse from 'parse';
+
+// Função para criar o usuário no back4app
+async function signUp(email, password) {
+  try {
+    // Cria o usuário no back4app
+    const user = await Parse.User.signUp(email, password);
+    // Salva o email no LocalStorage se a opção de lembrar estiver selecionada
+    if (rememberMe) {
+      localStorage.setItem('rememberedEmail', email);
+    }
+    // Redireciona para a rota de dashboard
+    navigate('/dashboard');
+  } catch (error) {
+    // Trata erros de login
+    setError(error.message);
+  }
+}
 
 const Register = () => {
   const [formData, setFormData] = useState({
@@ -9,6 +28,20 @@ const Register = () => {
     confirmPassword: '',
   });
 
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    try {
+      const response = await axios.post('https://parseapi.back4app.com/users', {
+        username: formData.username,
+        email: formData.email,
+        password: formData.password,
+      });
+      console.log(response.data);
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData({
@@ -17,28 +50,7 @@ const Register = () => {
     });
   };
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    // Aqui voce pode adicionar a lógica para enviar os dados do formulário para o backend
-    const handleSubmit = async (e) => {
-      e.preventDefault();
-      try {
-        const response = await axios.post('https://parseapi.back4app.com/parse/classes/User', {
-          username: formData.username,
-          email: formData.email,
-          password: formData.password,
-        });
-        console.log(response.data);
-      } catch (error) {
-        console.error(error);
-      }
-    };
-    console.log('Dados do formulário:', formData);
-  };
-
-   //Lógica após o registro do usuário
-   
-   return (
+  return (
     <div className="register-container">
       <h2>Registro</h2>
       <form onSubmit={handleSubmit}>

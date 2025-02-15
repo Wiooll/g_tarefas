@@ -11,14 +11,16 @@ const PORT = process.env.PORT || 5173;
 // Inicializa Parse (Back4App)
 Parse.initialize(process.env.BACK4APP_APP_ID, process.env.BACK4APP_JS_KEY); 
 Parse.serverURL = process.env.BACK4APP_SERVER_URL;
+
 // Middlewares
 app.use(express.json()); // Middleware para analisar requisicoes JSON
 app.use(cors()); // Middleware para habilitar CORS
 
 // Rotas
-app.use('/classes/tasks', taskRoutes); // Rotas de tarefas
+app.use('/classes/Tasks', taskRoutes); // Rotas de tarefas
 
 // Iniciar servidor
 app.listen(PORT, () => {
   console.log(`Servidor rodando na porta ${PORT}`);
 });
+
