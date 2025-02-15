@@ -73,8 +73,7 @@ const Dashboard = () => {
     }
 
     try {
-      const Task = Parse.Object.extend("Task");
-      const task = new Task();
+      const task = new Parse.Object('Task');
       task.set('title', newTask.title);
       task.set('description', newTask.description || '');
       task.set('priority', newTask.priority);
@@ -88,7 +87,6 @@ const Dashboard = () => {
     }
   };
   
-
   return (
     <div className="min-h-screen bg-gray-100 p-8">
       {/* Cabeçalho e Formulário */}
