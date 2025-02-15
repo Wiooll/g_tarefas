@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import './Register.css';
+import './register.css';
 
 const Register = () => {
   const [formData, setFormData] = useState({
@@ -20,10 +20,25 @@ const Register = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     // Aqui voce pode adicionar a lógica para enviar os dados do formulário para o backend
+    const handleSubmit = async (e) => {
+      e.preventDefault();
+      try {
+        const response = await axios.post('https://parseapi.back4app.com/parse/classes/User', {
+          username: formData.username,
+          email: formData.email,
+          password: formData.password,
+        });
+        console.log(response.data);
+      } catch (error) {
+        console.error(error);
+      }
+    };
     console.log('Dados do formulário:', formData);
   };
 
-  return (
+   //Lógica após o registro do usuário
+   
+   return (
     <div className="register-container">
       <h2>Registro</h2>
       <form onSubmit={handleSubmit}>

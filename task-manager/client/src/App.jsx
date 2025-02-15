@@ -7,8 +7,8 @@ function App() { // Componente principal
   return (
     <BrowserRouter>
       <Routes>
-        <Route path="/" element={<Login/>} />
-        <Route path="/login" element={<Dashboard/>} />
+        <Route path="/dashboard" element={<Dashboard/>} />
+        <Route path="/login" element={<Login/>} />
         <Route path="/register" element={<Register />} />
       </Routes>
     </BrowserRouter>
